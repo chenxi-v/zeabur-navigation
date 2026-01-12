@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "type": "static",
+    "build": {
+        "command": "echo 'No build required for static site'",
+        "output": "."
+    },
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ],
+    "env": {
+        "NODE_ENV": "production"
+    }
+}
