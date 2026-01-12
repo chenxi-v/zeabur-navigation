@@ -1,6 +1,6 @@
 # my-zeabur-app
-个人网址导航页
-Zeabur直接导入即可
+1. 个人网址导航页
+2. 复刻仓库后Zeabur直接选导入即可
 ```
 zeabur-navigation/
 ├── index.html             # 主页面（包含css和天气插件）
