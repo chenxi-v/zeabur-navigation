@@ -3,7 +3,6 @@
 ```
 zeabur-navigation/
 ├── index.html             # 主页面
-├── style.css              # 独立样式文件
 ├── nav-data.json          # 导航数据配置
 ├── zeabur.json            # Zeabur平台配置
 ├── assets/
