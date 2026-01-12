@@ -1,0 +1,176 @@
+{
+  "categories": [
+    {
+      "id": "tools",
+      "name": "常用工具",
+      "icon": "🛠️",
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com",
+          "icon": "assets/icons/github.svg",
+          "desc": "全球最大的代码托管和协作开发平台，支持 Git 版本控制"
+        },
+        {
+          "name": "GitLab",
+          "url": "https://gitlab.com",
+          "icon": "assets/icons/gitlab.svg",
+          "desc": "一体化 DevOps 平台，提供完整的 CI/CD 解决方案"
+        },
+        {
+          "name": "Stack Overflow",
+          "url": "https://stackoverflow.com",
+          "icon": "assets/icons/stackoverflow.svg",
+          "desc": "程序员问答社区，解决编程技术难题的最佳去处"
+        },
+        {
+          "name": "MDN Web Docs",
+          "url": "https://developer.mozilla.org",
+          "icon": "assets/icons/mdn.png",
+          "desc": "Mozilla 官方 Web 技术文档，前端开发者必备参考"
+        },
+        {
+          "name": "Can I Use",
+          "url": "https://caniuse.com",
+          "icon": "assets/icons/caniuse.png",
+          "desc": "查询浏览器对 HTML5、CSS3 等 Web 特性的支持情况"
+        },
+        {
+          "name": "Figma",
+          "url": "https://figma.com",
+          "icon": "assets/icons/figma.png",
+          "desc": "基于云端的界面设计工具，支持实时协作和原型制作"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "name": "设计资源",
+      "icon": "🎨",
+      "links": [
+        {
+          "name": "Dribbble",
+          "url": "https://dribbble.com",
+          "icon": "assets/icons/Dribbble.png",
+          "desc": "设计师作品展示平台，发现全球优秀的设计灵感"
+        },
+        {
+          "name": "Behance",
+          "url": "https://behance.net",
+          "icon": "assets/icons/behance.png",
+          "desc": "Adobe 旗下的创意作品展示社区，涵盖各类设计领域"
+        },
+        {
+          "name": "Unsplash",
+          "url": "https://unsplash.com",
+          "icon": "assets/icons/unsplash.png",
+          "desc": "高质量免费图片素材库，适用于商业和个人项目"
+        },
+        {
+          "name": "Pinterest",
+          "url": "https://pinterest.com",
+          "icon": "assets/icons/pinterest.png",
+          "desc": "图片分享和收藏平台，适合收集设计灵感和创意"
+        },
+        {
+          "name": "Adobe Color",
+          "url": "https://color.adobe.com",
+          "icon": "assets/icons/adobecolor.png",
+          "desc": "专业的色彩搭配工具，帮助创建和谐的配色方案"
+        },
+        {
+          "name": "Coolors",
+          "url": "https://coolors.co",
+          "icon": "assets/icons/coolors.png",
+          "desc": "快速生成配色方案的在线工具，支持导出多种格式"
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "name": "社交平台",
+      "icon": "👥",
+      "links": [
+        {
+          "name": "Twitter",
+          "url": "https://twitter.com",
+          "icon": "assets/icons/twitter.png",
+          "desc": "全球知名的社交媒体平台，用于分享短消息和实时资讯"
+        },
+        {
+          "name": "LinkedIn",
+          "url": "https://linkedin.com",
+          "icon": "assets/icons/linkedin.png",
+          "desc": "专业的职场社交网络，用于建立职业联系和求职招聘"
+        },
+        {
+          "name": "Discord",
+          "url": "https://discord.com",
+          "icon": "assets/icons/discord.png",
+          "desc": "游戏和社区聊天平台，支持语音、视频和文字交流"
+        },
+        {
+          "name": "Reddit",
+          "url": "https://reddit.com",
+          "icon": "assets/icons/reddit.png",
+          "desc": "美国版贴吧，用户可以讨论各种话题并分享内容"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://youtube.com",
+          "icon": "assets/icons/youtube.png",
+          "desc": "全球最大的视频分享平台，涵盖教育、娱乐、音乐等"
+        },
+        {
+          "name": "Instagram",
+          "url": "https://instagram.com",
+          "icon": "assets/icons/instagram.png",
+          "desc": "以图片和短视频为主的社交平台，适合视觉内容分享"
+        }
+      ]
+    },
+    {
+      "id": "dev",
+      "name": "开发工具",
+      "icon": "💻",
+      "links": [
+        {
+          "name": "VS Code",
+          "url": "https://code.visualstudio.com",
+          "icon": "assets/icons/vscode.png",
+          "desc": "微软开发的免费开源代码编辑器，支持丰富的插件生态"
+        },
+        {
+          "name": "Postman",
+          "url": "https://postman.com",
+          "icon": "assets/icons/postman.png",
+          "desc": "API 开发和测试工具，简化 API 调试和文档管理"
+        },
+        {
+          "name": "Netlify",
+          "url": "https://netlify.com",
+          "icon": "assets/icons/netlify.png",
+          "desc": "现代化的静态网站托管平台，支持自动部署和 CDN 加速"
+        },
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com",
+          "icon": "assets/icons/vercel.png",
+          "desc": "前端框架优化的部署平台，特别适合 Next.js 应用"
+        },
+        {
+          "name": "Cloudflare",
+          "url": "https://cloudflare.com",
+          "icon": "assets/icons/cloudflare.png",
+          "desc": "网络安全和 CDN 服务提供商，提升网站性能和安全性"
+        },
+        {
+          "name": "Heroku",
+          "url": "https://heroku.com",
+          "icon": "assets/icons/heroku.png",
+          "desc": "云应用平台即服务(PaaS)，简化应用部署和扩展流程"
+        }
+      ]
+    }
+  ]
+}
