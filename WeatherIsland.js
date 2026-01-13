@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晨曦导航 - 极简灵动风格</title>
+    
+    <!-- 网站标志 (Favicon) -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    
+    <style>
+        /* style.css - 独立样式文件 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('assets/backgrounds/kumtanom.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            padding-top: 50px; /* 为移动端天气条预留空间 */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* 时间日期容器样式 - 修改为绿色+阴影效果 */
+        .datetime-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .datetime-display {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.9) 0%, rgba(34, 197, 94, 0.95) 100%);
+            padding: 12px 30px;
+            border-radius: 25px;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.25),
+                0 4px 10px rgba(0, 0, 0, 0.15),
+                inset 0 2px 8px rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .datetime-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+        }
+
+        .datetime-display:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 25px rgba(0, 0, 0, 0.3),
+                0 6px 15px rgba(0, 0, 0, 0.2),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        #currentDate {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        #currentTime {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        #currentTime::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        }
+
+        /* 时间秒数字体效果 */
+        .seconds {
+            color: #fffbeb;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 40px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .search-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .search-button svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* 分类直达栏 */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding: 10px 0;
+        }
+
+        .category-nav a {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .category-nav a:hover,
+        .category-nav a.active {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .category {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            scroll-margin-top: 120px; /* 跳转时留出顶部空间 */
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .category h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .category h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4ade80, transparent);
+            border-radius: 2px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0,0,0,0.1);
+            gap: 12px;
+        }
+
+        .link-item:hover {
+            background: rgba(74, 222, 128, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .link-icon-container {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .link-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .link-text {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .link-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .footer {
+            text-align: center;
+            color: black;
+            padding: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 一键回到顶部按钮 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #backToTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTopBtn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        #backToTopBtn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .datetime-display {
+                padding: 10px 25px;
+                margin: 10px 15px;
+            }
+            
+            #currentDate {
+                font-size: 1rem;
+            }
+            
+            #currentTime {
+                font-size: 1.5rem;
+            }
+            
+            .search-input {
+                padding: 12px 20px 12px 20px;
+                font-size: 14px;
+            }
+            
+            .search-button {
+                width: 35px;
+            }
+            
+            .search-button svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            body {
+                padding: 10px;
+                padding-top: 60px; /* 移动端为天气条保留更多空间 */
+            }
+            
+            .category-nav {
+                gap: 8px;
+                padding: 5px 0;
+            }
+            
+            .category-nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .link-item {
+                padding: 10px;
+            }
+            
+            .link-text {
+                font-size: 13px;
+            }
+            
+            .link-desc {
+                font-size: 11px;
+            }
+            
+            /* 移动端回顶按钮位置调整 */
+            #backToTopBtn {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            #backToTopBtn svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* 添加加载动画 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>晨曦🌿导航</h1>
+            <p>清爽自然 · 回归本质</p>
+        </div>
+
+        <!-- 时间日期显示 -->
+        <div class="datetime-container">
+            <div class="datetime-display">
+                <div id="currentDate">正在加载日期...</div>
+                <div id="currentTime">正在加载时间...</div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="在必应中搜索...">
+                <button class="search-button" id="searchButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 分类直达导航栏 -->
+        <div class="category-nav" id="categoryNav"></div>
+
+        <div class="categories" id="categoriesContainer">
+            <!-- 类别将通过JavaScript动态加载 -->
+        </div>
+
+        <div class="footer">
+            <p>🌱 部署在 Zeabur Platform | 📦 代码托管在 GitHub</p>
+        </div>
+    </div>
+
+    <!-- 一键回到顶部按钮 -->
+    <button id="backToTopBtn" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 19V7.83l4.88 4.88c.39.39 1.03.39 1.42 0 .39-.39.39-1.02 0-1.41L12.71 4.71a.996.996 0 0 0-1.41 0L4.71 11.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L11 7.83V19c0 .55.45 1 1 1s1-.45 1-1z"/>
+        </svg>
+    </button>
+
+    <!-- 引入独立的天气插件 -->
+    <script src="WeatherIsland.js"></script>
+
+    <script>
+        // 时间日期更新函数 - 优化了秒数显示效果
+        function updateDateTime() {
+            const now = new Date();
+            
+            // 格式化日期
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const weekday = weekdays[now.getDay()];
+            
+            // 格式化时间
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            // 更新显示 - 秒数添加特殊样式
+            document.getElementById('currentDate').textContent = `${year}年${month}月${day}日 ${weekday}`;
+            document.getElementById('currentTime').innerHTML = `${hours}:${minutes}:<span class="seconds">${seconds}</span>`;
+            
+            // 每秒闪烁效果
+            const secondsSpan = document.querySelector('#currentTime .seconds');
+            if (secondsSpan) {
+                secondsSpan.style.opacity = (now.getSeconds() % 2 === 0) ? '1' : '0.9';
+            }
+        }
+
+        // 执行搜索功能
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                window.open(`https://www.bing.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
+                searchInput.value = '';
+            }
+        }
+
+        // 渲染单个链接项（包含介绍和本地图标）
+        function renderLinkItem(link) {
+            return `
+                <a href="${link.url}" class="link-item" target="_blank" title="${link.name}: ${link.desc}">
+                    <div class="link-icon-container">
+                        <img src="${link.icon}" alt="${link.name}" class="link-icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="link-content">
+                        <div class="link-text">${link.name}</div>
+                        <div class="link-desc">${link.desc}</div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // 渲染导航类别
+        function renderCategories(navData) {
+            const container = document.getElementById('categoriesContainer');
+            container.innerHTML = '';
+
+            navData.categories.forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.id = `category-${category.id}`; // 添加ID用于锚点跳转
+                
+                let linksHtml = '';
+                category.links.forEach(link => {
+                    linksHtml += renderLinkItem(link);
+                });
+
+                categoryDiv.innerHTML = `
+                    <h2>${category.icon} ${category.name}</h2>
+                    <div class="links">${linksHtml}</div>
+                `;
+                
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        // 渲染分类直达导航栏
+        function renderCategoryNav(navData) {
+            const navContainer = document.getElementById('categoryNav');
+            let navHtml = '';
+            
+            navData.categories.forEach(category => {
+                navHtml += `
+                    <a href="#category-${category.id}" data-category="${category.id}">
+                        ${category.icon} ${category.name}
+                    </a>
+                `;
+            });
+            
+            navContainer.innerHTML = navHtml;
+            
+            // 添加点击事件监听器
+            navContainer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有 active 类
+                    navContainer.querySelectorAll('a').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                    
+                    // 为当前点击的添加 active 类
+                    this.classList.add('active');
+                    
+                    // 获取目标元素并滚动到该位置
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // 计算滚动位置（考虑固定头部高度）
+                        const offsetTop = targetElement.offsetTop - 100;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // 搜索功能 - 集成必应搜索
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            // 确保搜索输入框和按钮存在
+            if (searchInput && searchButton) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+                
+                searchButton.addEventListener('click', performSearch);
+            } else {
+                console.error('搜索元素未找到');
+            }
+        }
+
+        // 一键回到顶部功能
+        function setupBackToTop() {
+            const button = document.getElementById('backToTopBtn');
+            
+            if (button) {
+                // 滚动事件监听
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        button.classList.add('visible');
+                    } else {
+                        button.classList.remove('visible');
+                    }
+                });
+                
+                // 点击事件
+                button.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化时间日期显示
+            updateDateTime();
+            setInterval(updateDateTime, 1000); // 每秒更新一次
+            
+            // 初始化天气插件
+            if (typeof WeatherIsland !== 'undefined') {
+                const weatherIsland = new WeatherIsland({
+                    position: 'top-right',
+                    theme: 'default',
+                    refreshInterval: 3600000, // 1小时刷新一次
+                    showDetails: true
+                });
+            }
+            
+            // 加载导航数据并渲染页面
+            fetch('nav-data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应不正常');
+                    }
+                    return response.json();
+                })
+                .then(navData => {
+                    renderCategories(navData);
+                    renderCategoryNav(navData);
+                })
+                .catch(error => {
+                    console.error('加载导航数据失败:', error);
+                    document.getElementById('categoriesContainer').innerHTML = '<p style="text-align:center;color:white;">导航数据加载失败，请检查网络连接</p>';
+                });
+            
+            // 设置搜索功能
+            setupSearch();
+            
+            // 设置回到顶部功能
+            setupBackToTop();
+            
+            // 添加悬停效果
+            document.querySelectorAll('.category').forEach(cat => {
+                cat.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                cat.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
