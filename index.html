@@ -27,15 +27,15 @@
             --shadow-dark: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* 深色模式变量 */
+        /* 深色模式变量 - 修改为深紫色主题 */
         :root.dark-mode {
-            --bg-base: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --card-bg: rgba(26, 26, 46, 0.95);
-            --link-card-bg: rgba(38, 38, 68, 0.8);
+            --bg-base: linear-gradient(135deg, #2d0a4d 0%, #1a062e 100%); /* 深紫色背景 */
+            --card-bg: rgba(68, 28, 104, 0.85); /* 深紫雾化透明卡片背景 */
+            --link-card-bg: rgba(88, 38, 132, 0.7); /* 深紫雾化透明链接卡片背景 */
             --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
+            --text-secondary: #cbb2e8; /* 紫色系次级文字 */
             --white: #e2e8f0;
-            --primary-green: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            --primary-green: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); /* 紫色渐变替代绿色 */
             --shadow-light: 0 8px 32px rgba(0,0,0,0.3);
             --shadow-dark: 0 4px 15px rgba(0,0,0,0.4);
         }
@@ -155,7 +155,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* 时间日期容器样式 - 修改为绿色+阴影效果 */
+        /* 时间日期容器样式 - 修改为紫色+阴影效果 */
         .datetime-container {
             text-align: center;
             margin: 15px 0;
@@ -295,7 +295,7 @@
             fill: var(--white);
         }
 
-        /* 分类直达栏 */
+        /* 分类直达栏 - 修改为雾化透明效果 */
         .category-nav {
             display: flex;
             justify-content: center;
@@ -306,7 +306,7 @@
         }
 
         .category-nav a {
-            background: var(--card-bg);
+            background: var(--card-bg); /* 使用雾化透明背景 */
             color: var(--text-primary);
             padding: 8px 16px;
             border-radius: 20px;
@@ -318,6 +318,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            backdrop-filter: blur(10px); /* 雾化效果 */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 边框增强雾化感 */
         }
 
         .category-nav a:hover,
@@ -340,9 +342,10 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: var(--shadow-light);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* 雾化效果 */
             transition: all 0.3s ease;
             scroll-margin-top: 120px; /* 跳转时留出顶部空间 */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 边框增强雾化感 */
         }
 
         .category:hover {
@@ -389,10 +392,11 @@
             background: var(--link-card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             gap: 12px;
+            backdrop-filter: blur(5px); /* 链接项也应用雾化效果 */
         }
 
         .link-item:hover {
-            background: rgba(74, 222, 128, 0.1);
+            background: rgba(167, 139, 250, 0.2); /* 紫色系悬停效果 */
             transform: translateX(5px);
             box-shadow: var(--shadow-dark);
         }
@@ -926,3 +930,6 @@
     </script>
 </body>
 </html>
+
+
+
