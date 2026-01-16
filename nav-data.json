@@ -1,6 +1,49 @@
 {
   "categories": [
     {
+      "id": "common",
+      "name": "我的常用",
+      "icon": "⭐",
+      "links": [
+        {
+          "name": "凯速网",
+          "url": "https://kstore.cc",
+          "icon": "assets/icons/kstore.ico",
+          "desc": "直链文件存储平台，支持多种存储方式和在线编辑功能"
+        },
+        {
+          "name": "OpenDrive",
+          "url": "https://www.opendrive.com/files",
+          "icon": "assets/icons/opendrive.ico",
+          "desc": "云存储和文件共享服务，提供在线文件管理"
+        },
+        {
+          "name": "Zeabur",
+          "url": "https://zeabur.com/zh-CN",
+          "icon": "assets/icons/zeabur.png",
+          "desc": "AI驱动的云部署平台，通过对话简化项目部署流程"
+        },
+        {
+          "name": "InfinityFree",
+          "url": "https://dash.infinityfree.com/accounts",
+          "icon": "assets/icons/InfinityFree.png",
+          "desc": "免费网站托管服务，支持PHP、MySQL和无限带宽"
+        },
+        {
+          "name": "IP风险查询",
+          "url": "https://ping0.cc",
+          "icon": "assets/icons/ping0.ico",
+          "desc": "提供网络诊断与信息查询、IP地址纯净度和风险分析"
+        },
+        {
+          "name": "IP地址查询",
+          "url": "https://site.ip138.com",
+          "icon": "assets/icons/138.ico",
+          "desc": "全面的IP地址查询工具，提供域名解析和反查功能"
+        }
+      ]
+    },
+    {
       "id": "tools",
       "name": "常用工具",
       "icon": "🛠️",
@@ -87,49 +130,6 @@
       ]
     },
     {
-      "id": "social",
-      "name": "社交平台",
-      "icon": "👥",
-      "links": [
-        {
-          "name": "Twitter",
-          "url": "https://twitter.com",
-          "icon": "assets/icons/twitter.png",
-          "desc": "全球知名的社交媒体平台，用于分享短消息和实时资讯"
-        },
-        {
-          "name": "LinkedIn",
-          "url": "https://linkedin.com",
-          "icon": "assets/icons/linkedin.png",
-          "desc": "专业的职场社交网络，用于建立职业联系和求职招聘"
-        },
-        {
-          "name": "Discord",
-          "url": "https://discord.com",
-          "icon": "assets/icons/discord.png",
-          "desc": "游戏和社区聊天平台，支持语音、视频和文字交流"
-        },
-        {
-          "name": "Reddit",
-          "url": "https://reddit.com",
-          "icon": "assets/icons/reddit.png",
-          "desc": "美国版贴吧，用户可以讨论各种话题并分享内容"
-        },
-        {
-          "name": "YouTube",
-          "url": "https://youtube.com",
-          "icon": "assets/icons/youtube.png",
-          "desc": "全球最大的视频分享平台，涵盖教育、娱乐、音乐等"
-        },
-        {
-          "name": "Instagram",
-          "url": "https://instagram.com",
-          "icon": "assets/icons/instagram.png",
-          "desc": "以图片和短视频为主的社交平台，适合视觉内容分享"
-        }
-      ]
-    },
-    {
       "id": "dev",
       "name": "开发工具",
       "icon": "💻",
@@ -137,7 +137,7 @@
         {
           "name": "VS Code",
           "url": "https://code.visualstudio.com",
-          "icon": "assets/icons/vscode.png",
+          "icon": "assets/icons/visualstudio.png",
           "desc": "微软开发的免费开源代码编辑器，支持丰富的插件生态"
         },
         {
@@ -169,6 +169,92 @@
           "url": "https://heroku.com",
           "icon": "assets/icons/heroku.png",
           "desc": "云应用平台即服务(PaaS)，简化应用部署和扩展流程"
+        }
+      ]
+    },
+    {
+      "id": "entertainment",
+      "name": "影音娱乐",
+      "icon": "🎮",
+      "links": [
+        {
+          "name": "Gamer520",
+          "url": "https://www.gamer520.com",
+          "icon": "assets/icons/Gamer520.png",
+          "desc": "游戏资源分享和社区平台，提供游戏下载和攻略"
+        },
+        {
+          "name": "Steam",
+          "url": "https://store.steampowered.com",
+          "icon": "assets/icons/steam.ico",
+          "desc": "全球最大的数字游戏分发平台，提供游戏购买、下载和社区功能"
+        },
+        {
+          "name": "虎牙直播",
+          "url": "https://www.huya.com",
+          "icon": "assets/icons/huya.ico",
+          "desc": "中国领先的游戏直播平台，提供电竞直播和娱乐内容"
+        },
+        {
+          "name": "Bilibili",
+          "url": "https://www.bilibili.com",
+          "icon": "assets/icons/bilibili.png",
+          "desc": "中国年轻人喜爱的视频分享和弹幕网站，涵盖动漫、游戏和用户生成内容"
+        },
+        {
+          "name": "爱TY影视",
+          "url": "https://atyys.com/?ref=www.zhil.cc",
+          "icon": "assets/icons/aity.png",
+          "desc": "免费影视观看平台，无广告免会员，提供超清播放服务"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com",
+          "icon": "assets/icons/youtube.png",
+          "desc": "全球最大的视频分享平台，涵盖教育、娱乐、音乐等各类内容"
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "name": "免费图库",
+      "icon": "🖼️",
+      "links": [
+        {
+          "name": "Iconfont",
+          "url": "https://www.iconfont.cn",
+          "icon": "assets/icons/iconfont.svg",
+          "desc": "阿里巴巴矢量图标库，提供海量图标素材和管理工具"
+        },
+        {
+          "name": "Emojiall中文网",
+          "url": "https://www.emojiall.com/zh-hans",
+          "icon": "assets/icons/emojiall.ico",
+          "desc": "中文表情符号大全网站，提供表情符号含义和复制功能"
+        },
+        {
+          "name": "Pexels",
+          "url": "https://www.pexels.com/zh-cn",
+          "icon": "assets/icons/Pexels.png",
+          "desc": "免费高质量图片和视频素材库，由摄影作者分享"
+        },
+        {
+          "name": "哲风壁纸",
+          "url": "https://haowallpaper.com",
+          "icon": "assets/icons/haowallpaper.ico",
+          "desc": "免费4K高清壁纸下载网站，提供电脑和手机壁纸"
+        },
+        {
+          "name": "壁纸汇",
+          "url": "https://www.bizhihui.com",
+          "icon": "assets/icons/bizhihui.png",
+          "desc": "免费壁纸下载平台，提供4K、8K高清壁纸图片"
+        },
+        {
+          "name": "方圆壁纸",
+          "url": "https://fangyuanwallpaper.com",
+          "icon": "assets/icons/fangyuan.ico",
+          "desc": "免费高品质壁纸下载平台，每日更新精选内容"
         }
       ]
     }
