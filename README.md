@@ -36,7 +36,7 @@ zeabur-navigation/
 │   ├── backgrounds/       # 背景图片目录
 │   └── icons/             # 网站图标目录
 │
-├──WeatherIsland.js        # 天气插件
+├── WeatherIsland.js        # 天气插件
 └── README.md              # 部署说明
 ```
 
