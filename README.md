@@ -49,7 +49,7 @@ zeabur-navigation/
 所有导航数据都在：
 
 ```json
-sites.json
+nav-data.json
 ```
 
 示例：
@@ -57,11 +57,12 @@ sites.json
 ```json
 {
   "开发工具": [
-    {
-      "name": "GitHub",
-      "url": "https://github.com",
-      "icon": "assets/icons/github.png"
-    }
+        {
+          "name": "GitLab",
+          "url": "https://gitlab.com",
+          "icon": "assets/icons/gitlab.svg",
+          "desc": "一体化 DevOps 平台，提供完整的 CI/CD 解决方案"
+        },
   ]
 }
 ```
